@@ -35,12 +35,12 @@ if [ -f /root/.my.cnf ]; then
 	echo "Note: password will be hidden when typing"
 	read -s rootpasswd
 	# MySQL commands
-	commands=$(cat <<EOF
-	USE $dbname;
-	SET GLOBAL sql_mode = 'NO_ENGINE_SUBSTITUTION';
-	SET SESSION sql_mode = 'NO_ENGINE_SUBSTITUTION';
-	EOF
-	)
+    commands=$(cat <<EOF
+    USE $dbname;
+    SET GLOBAL sql_mode = 'NO_ENGINE_SUBSTITUTION';
+    SET SESSION sql_mode = 'NO_ENGINE_SUBSTITUTION';
+EOF
+    )
 	echo "$commands" | mysql -u root -p"$rootpassword"
 	echo "You're good now :)"
 	exit
@@ -78,12 +78,12 @@ else
 	sudo mysql -uroot -p${rootpasswd} -e "FLUSH PRIVILEGES;"
 	sudo mysql -uroot -p${rootpasswd} ${dbname} < db.sql
 	# MySQL commands
-	commands=$(cat <<EOF
-	USE $dbname;
-	SET GLOBAL sql_mode = 'NO_ENGINE_SUBSTITUTION';
-	SET SESSION sql_mode = 'NO_ENGINE_SUBSTITUTION';
-	EOF
-	)
+    commands=$(cat <<EOF
+    USE $dbname;
+    SET GLOBAL sql_mode = 'NO_ENGINE_SUBSTITUTION';
+    SET SESSION sql_mode = 'NO_ENGINE_SUBSTITUTION';
+EOF
+    )
 	echo "$commands" | mysql -u root -p"$rootpasswd"
 	echo "You're good now :)"
 	exit
